@@ -2,6 +2,8 @@ import React from 'react';
 import axios from 'axios';
 import { StyledUploader, StyledDiv, StyledButton } from './Upload.styles';
 
+const { REACT_APP_BACKEND_BASE_URL } = process.env;
+
 function getData(file, setData) {
   axios.get(`/files/${file.name}`).then((res) => {
     setData(res.data);
@@ -13,7 +15,7 @@ function renderFileInfo(file, setData) {
     <StyledDiv>
       <div>
         <span>File Name: {file.name}</span>
-        <p>File URL: {`/files/${file.name}`}</p>
+        <p>File URL: {`${REACT_APP_BACKEND_BASE_URL}/files/${file.name}`}</p>
       </div>
       <StyledButton appearance="primary" onClick={() => getData(file, setData)}>
         {' '}
