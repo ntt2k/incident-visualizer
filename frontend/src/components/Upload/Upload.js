@@ -1,7 +1,6 @@
 import React from 'react';
 import axios from 'axios';
-import { Button } from 'rsuite';
-import { StyledUploader } from './Upload.styles';
+import { StyledUploader, StyledDiv, StyledButton } from './Upload.styles';
 
 function getData(file, setData) {
   axios.get(`${REACT_APP_API_BASE_URL}/files/${file.name}`).then((res) => {
@@ -11,16 +10,16 @@ function getData(file, setData) {
 
 function renderFileInfo(file, setData) {
   return (
-    <>
+    <StyledDiv>
       <div>
         <span>File Name: {file.name}</span>
         <p>File URL: {`${REACT_APP_API_BASE_URL}/files/${file.name}`}</p>
       </div>
-      <Button appearance="primary" onClick={() => getData(file, setData)}>
+      <StyledButton appearance="primary" onClick={() => getData(file, setData)}>
         {' '}
         Load data{' '}
-      </Button>
-    </>
+      </StyledButton>
+    </StyledDiv>
   );
 }
 

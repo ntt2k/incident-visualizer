@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { Uploader } from 'rsuite';
+import { Uploader, Button } from 'rsuite';
 
 export const StyledUploader = styled(Uploader)`
   &.rs-uploader-text .rs-uploader-file-item {
@@ -14,3 +14,11 @@ export const StyledUploader = styled(Uploader)`
   }
 `;
 
+export const StyledDiv = styled.div`
+  display: flex;
+  /* flex-direction:  */
+`;
+
+export const StyledButton = styled(Button)`
+  margin: 0 2rem;
+`;
