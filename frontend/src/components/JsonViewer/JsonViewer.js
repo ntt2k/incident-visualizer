@@ -9,7 +9,7 @@ export const StyledDiv = styled.div`
 const JsonViewer = (props) => {
   return (
     <StyledDiv>
-      <ReactJson  {...props} />
+      <ReactJson theme="flat" {...props} />
     </StyledDiv>
   )
 }
