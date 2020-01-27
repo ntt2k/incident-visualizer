@@ -1,12 +1,16 @@
-import React from 'react';
+import React, { useState } from 'react';
 import 'rsuite/dist/styles/rsuite-default.css';
 import { AppContent } from './App.styles';
 import Upload from './components/Upload';
+import JsonViewer from './components/JsonViewer';
 
 function App() {
+  const [data, setData] = useState({});
+
   return (
     <AppContent>
-      <Upload />
+      <Upload onSuccessUpload={setData} />
+      <JsonViewer theme="flat" src={data} />
     </AppContent>
   );
 }
