@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import MapGL from 'react-map-gl';
-import PopupItem from './PopupItem';
+import MarkerItem from './MarkerItem';
 import { StyledNavigationControl } from './Map.styles';
 
 const { REACT_APP_MAP_GL_TOKEN } = process.env;
@@ -38,7 +38,7 @@ const Map = (props) => {
       />
 
       {markersList.map((marker, index) => (
-        <PopupItem key={index} marker={marker} />
+        <MarkerItem key={index} marker={marker} />
       ))}
     </MapGL>
   );

@@ -3,7 +3,7 @@ import axios from 'axios';
 import { StyledUploader, StyledDiv, StyledButton } from './Upload.styles';
 
 function getData(file, setData) {
-  axios.get(`${REACT_APP_API_BASE_URL}/files/${file.name}`).then((res) => {
+  axios.get(`/files/${file.name}`).then((res) => {
     setData(res.data);
   });
 }
@@ -13,7 +13,7 @@ function renderFileInfo(file, setData) {
     <StyledDiv>
       <div>
         <span>File Name: {file.name}</span>
-        <p>File URL: {`${REACT_APP_API_BASE_URL}/files/${file.name}`}</p>
+        <p>File URL: {`/files/${file.name}`}</p>
       </div>
       <StyledButton appearance="primary" onClick={() => getData(file, setData)}>
         {' '}
@@ -23,15 +23,13 @@ function renderFileInfo(file, setData) {
   );
 }
 
-const { REACT_APP_API_BASE_URL } = process.env;
-
 const Upload = (props) => {
   const { setData } = props;
 
   return (
     <StyledUploader
       dragable
-      action={`${REACT_APP_API_BASE_URL}/files/upload`}
+      action={`/files/upload`}
       renderFileInfo={(file) => renderFileInfo(file, setData)}
       onSuccess={(data) => {
         setData(data);
