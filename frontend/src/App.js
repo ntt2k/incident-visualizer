@@ -9,7 +9,7 @@ function App() {
 
   return (
     <AppContent>
-      <Upload onSuccessUpload={setData} />
+      <Upload setData={setData} />
       <JsonViewer theme="flat" src={data} />
     </AppContent>
   );

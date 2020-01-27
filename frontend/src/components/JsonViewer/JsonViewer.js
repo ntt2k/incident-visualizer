@@ -3,7 +3,7 @@ import ReactJson from 'react-json-view';
 import styled from 'styled-components';
 
 export const StyledDiv = styled.div`
-  margin-top: 2rem;
+  margin-top: 1.5rem;
 `;
 
 const JsonViewer = (props) => {

@@ -1,28 +1,41 @@
 import React from 'react';
+import axios from 'axios';
+import { Button } from 'rsuite';
 import { StyledUploader } from './Upload.styles';
 
-function renderFileInfo(file) {
+function getData(file, setData) {
+  axios.get(`${REACT_APP_API_BASE_URL}/files/${file.name}`).then((res) => {
+    setData(res.data);
+  });
+}
+
+function renderFileInfo(file, setData) {
   return (
-    <div onClick={() => console.log('TRUNG IS HERE!')}>
-      <span>File Name: {file.name}</span>
-      <p>File URL: {`${REACT_APP_API_BASE_URL}/files/${file.name}`}</p>
-    </div>
+    <>
+      <div>
+        <span>File Name: {file.name}</span>
+        <p>File URL: {`${REACT_APP_API_BASE_URL}/files/${file.name}`}</p>
+      </div>
+      <Button appearance="primary" onClick={() => getData(file, setData)}>
+        {' '}
+        Load data{' '}
+      </Button>
+    </>
   );
 }
 
 const { REACT_APP_API_BASE_URL } = process.env;
 
 const Upload = (props) => {
-  const { onSuccessUpload } = props;
+  const { setData } = props;
 
   return (
     <StyledUploader
       dragable
       action={`${REACT_APP_API_BASE_URL}/files/upload`}
-      renderFileInfo={renderFileInfo}
-      onSuccess={(response) => {
-        console.log('response', response);
-        onSuccessUpload(response);
+      renderFileInfo={(file) => renderFileInfo(file, setData)}
+      onSuccess={(data) => {
+        setData(data);
       }}
     >
       <div>Click or Drag files to this area to upload</div>
